@@ -113,6 +113,11 @@ const app = express();
 
 
 
+app.get("/", (req, res) => {
+  return res.send("Server is up");
+});
+
+
 // Query params: /echo?name=Ali&age=22
 app.get("/echo", (req, res) => {
   const { name, age } = req.query;
@@ -157,6 +162,12 @@ app.param("userId", (req, res, next, userId) => {
 
 
 // Route params: /users/:userId route
+app.get("/users/:userId", (req, res) => {
+  return res.json({
+    ok: true,
+    userId: req.userIdNum,
+  });
+});
 
 
 // Start the server by listening
